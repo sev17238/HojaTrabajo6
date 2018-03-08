@@ -1,12 +1,16 @@
 
 package Cartas;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
+
 /**
  * Clase que demuestra la utilizacion del patron de diseño factory.
  * @author Diego Sevilla 17238
  * @author AnaLucia Hernandez 17138
  */
-class Factory<E> {
+class Factory<K,V> {
     Object implementacion;
     /**
      * Constructor vacio.
@@ -14,24 +18,23 @@ class Factory<E> {
     public Factory(){}
     /**
      * Selecciona la implementacion a utilizar para un stack o una lista.
-     * @param entryStack el stack que se quiere usar (vector, arraylist)
      * @param entryLista la lista que se quiere usar (simply, doubly o circular)
      * @return la instanciacion correspondiente
      */
-   public Object getStack(String entryStack, String entryLista) {
+   public Object getMap(String impMap) {
     // seleccion de la implementacion a utilizar:
         
-        if(entryStack.equals("Hashmap"))
+        if(impMap.equals("HashMap"))
         {
-            //implementacion =  new StackVector<>();
+            implementacion =  new HashMap<K,V>();
         }
-        else if(entryStack.equals("Treemap"))
+        else if(impMap.equals("TreeMap"))
         {
-            //implementacion = new StackArrayList<>();
+            implementacion = new TreeMap<K,V>();
         }
-        else if(entryStack.equals("LinkedHashmap"))
+        else if(impMap.equals("LinkeHashMap"))
         {
-            //implementacion = new StackList<>(entryLista);
+            implementacion = new LinkedHashMap<K,V>();
         }
         return implementacion;            
    }

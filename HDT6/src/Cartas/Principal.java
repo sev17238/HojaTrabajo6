@@ -5,7 +5,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+
+import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  *
@@ -15,7 +19,7 @@ public class Principal {
     
     public static void main(String[] args) throws IOException{
         int decision = 0;        
-        
+        Factory fac = new Factory();
         System.out.println("Ingrese la direccion o el nombre del documento .txt (en el caso está en la misma carpeta que el programa): ");
         Scanner teclado = new Scanner(System.in);
         String file = teclado.nextLine();
@@ -32,20 +36,25 @@ public class Principal {
                     line = br.readLine();
                 }
                 String everything = sb.toString();
-                System.out.println("¿Desea usar un Vector, una Lista o un ArrayList? (Escriba solo el numero) \n1. Hashmap \n2. Treemap \n3. LinkedHashmap");
+                System.out.println("¿Que Implementacion de la interface Map desea usar? (Escriba solo el numero) \n1. HashMap \n2. TreeMap \n3. LinkedHashMap");
                 String entry = teclado.nextLine();
+                
                 switch(entry)
                 {
                     case "1":
-                        entry = "Hashmap";
+                        entry = "HashMap";
+                        HashMap hash = (HashMap)fac.getMap(entry);
                         
                         break;
                     case "2":
-                        entry = "Treemap";
+                        entry = "TreeMap";
+                        TreeMap tree = (TreeMap)fac.getMap(entry);
                         
                         break;
                     case "3":
-                        entry = "LinkedHashmap";
+                        entry = "LinkedHashMap";
+                        LinkedHashMap lhash = (LinkedHashMap)fac.getMap(entry);
+                        
                         break;
                 }
 
