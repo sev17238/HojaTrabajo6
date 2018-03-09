@@ -31,15 +31,6 @@ public class Coleccion {
         return cartasDisponibles;
     }
     
-    public  void mostrarCartasHash(HashMap<String, Carta> listaCartas) {
-        String clave;
-        Iterator<String> cartas = listaCartas.keySet().iterator();
-        System.out.println("Las cartas son:");
-        while(cartas.hasNext()){
-            clave = cartas.next();
-            System.out.println(clave + " - " + listaCartas.get(clave));
-        }        
-    }
     public boolean insertarCarta(String key, String tipo)
     {
         boolean existe = false;
@@ -47,6 +38,7 @@ public class Coleccion {
         {
             if (entry.getKey().equals(key))
             {
+                existe = true;
                 for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
                 {
                     if (entryCol.getKey().equals(key))
@@ -60,10 +52,21 @@ public class Coleccion {
                         coleccion.put(key, card);
                     }
                 }
-                existe = true;
             }
         }
         return existe;
+    }
+    public Map.Entry<String, Carta> buscarCarta(String nombre)
+    {
+        Map.Entry<String, Carta> busqueda = null;
+        for (Map.Entry<String, Carta> entry : cartasDisponibles.entrySet()) //buscara en la lista de cartas disponibles si la que quiere ingresar existe
+        {
+            if (entry.getKey().equals(nombre))
+            {
+                busqueda = entry;
+            }
+        }
+        return busqueda;
     }
     public  void eliminarCartaHash(String key, HashMap<String, Carta> listaCartas) {
         if (listaCartas.containsKey(key)) {
@@ -73,50 +76,24 @@ public class Coleccion {
         }       
     } 
     
-    public String mostrarCartas()
+    public String mostrarCartasColeccion()
     {
         String hilo ="";
         for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
         {
-            hilo += "NOMBRE DE CARTA: " + entryCol.getKey() + "\n";
-            hilo += "TIPO DE CARTA: "+ entryCol.getValue().getTipo() + "\n";
+            hilo += "Nombre de carta: " + entryCol.getKey();
+            hilo += "\tTipo: "+ entryCol.getValue().getTipo() + "\n";
         }
         return hilo;
     }
-    public  void mostrarCartasTree(TreeMap<String, Carta> listaCartas) {
-        String clave;
-        Iterator<String> cartas = listaCartas.keySet().iterator();
-        System.out.println("Las cartas son:");
-        while(cartas.hasNext()){
-            clave = cartas.next();
-            System.out.println(clave + " - " + listaCartas.get(clave));
-        }        
+    public String mostrarCartasDisponibles()
+    {
+        String hilo ="";
+        for (Map.Entry<String, Carta> entryCol : cartasDisponibles.entrySet())
+        {
+            hilo += "Nombre de carta: " + entryCol.getKey();
+            hilo += "\tTipo: "+ entryCol.getValue().getTipo() + "\n";
+        }
+        return hilo;
     }
-    
-    public void eliminarCartaTree(String key, TreeMap<String,Carta> listaCartas) {
-        if (listaCartas.containsKey(key)) {
-            listaCartas.remove(key);
-        } else {
-            System.out.println("No hay ninguna carta con esa llave.");  
-        }       
-    }
-    
-    public  void mostrarCartasLhash(LinkedHashMap<String, Carta> listaCartas) {
-        String clave;
-        Iterator<String> cartas = listaCartas.keySet().iterator();
-        System.out.println("Las cartas son:");
-        while(cartas.hasNext()){
-            clave = cartas.next();
-            System.out.println(clave + " - " + listaCartas.get(clave));
-        }        
-    }
-    
-    public  void eliminarCartaLhash(String key, LinkedHashMap<String, Carta> listaCartas) {
-        if (listaCartas.containsKey(key)) {
-            listaCartas.remove(key);
-        } else {
-            System.out.println("No hay ninguna carta con esa llave.");  
-        }       
-    }
-
 }

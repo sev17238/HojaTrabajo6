@@ -72,32 +72,38 @@ public class Principal {
                     cards.getCartasDisp().put(key, card); //para poner en una coleccion todas las cartas disponibles
                 }
                 
-                while(decision2 != 7){
+                while(decision2 != 7)
+                {
                     System.out.println("Elija una de las de las 7 opciones: \n1. Agregar una carta a mi coleccion"
                     + "\n2.Mostrar el tipo de una carta en especifico.\n3.Mostrar el tipo nombre,tipo y cantidad de una carta en coleccion."
                             + "\n4. Opcion 3 solo que ordenadas por tipo.\n5.Mostrar el nombre y el tipo de todas las cartas existentes."
                             + "\n6. Opcion 5 pero ordenadas por tipo.\n7. Salir");
                     decision2 = Integer.parseInt(teclado.nextLine());
 
-                    switch(decision2){
+                    switch(decision2)
+                    {
                         case 1:
                             System.out.println("Ingrese el tipo de carta que desea agregar (monstruo, trampa, hechizo)");
-                            String value = teclado.nextLine();
+                            String value = teclado.nextLine().toUpperCase();
                             System.out.println("Ingrese el nombre de la carta");
-                            key = teclado.nextLine();
+                            key = teclado.nextLine().toUpperCase();
                             if (cards.insertarCarta(key, value) == false)
                             {
-                                System.out.println("ERROR: La carta que está intentando ingresar a su colección no se encuentra disponible.");
+                                System.out.println("ERROR: La carta que está intentando ingresar a su colección no se encuentra disponible.\n");
                             }
                             break;
                         case 2:
+                            System.out.println("Ingrese el nombre de la carta: ");
+                            String nombre = teclado.nextLine().toUpperCase();
+                            System.out.println("El tipo de la carta ingresada es: " + cards.buscarCarta(nombre).getValue().getTipo());
                             break;
                         case 3:
+                            System.out.println(cards.mostrarCartasColeccion());
                             break;
                         case 4:
                             break;
-                        case 5: // se muestran las cartas dependiendo de que tipo de implementacion se ha usado
-                            
+                        case 5: // se muestran las cartas disponibles
+                            System.out.println(cards.mostrarCartasDisponibles());
                             break;
                         case 6:
                             break;
