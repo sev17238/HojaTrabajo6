@@ -1,9 +1,7 @@
 
 package Cartas;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Clase que demuestra la utilizacion del patron de diseño factory.
@@ -11,17 +9,13 @@ import java.util.TreeMap;
  * @author AnaLucia Hernandez 17138
  */
 class Factory<K,V> {
-    Object implementacion;
+    Map implementacion;
     /**
      * Constructor vacio.
      */
     public Factory(){}
-    /**
-     * Selecciona la implementacion a utilizar para un stack o una lista.
-     * @param entryLista la lista que se quiere usar (simply, doubly o circular)
-     * @return la instanciacion correspondiente
-     */
-   public Object getMap(String impMap) {
+    
+    public Map getMap(String impMap) {
     // seleccion de la implementacion a utilizar:
         
         if(impMap.equals("HashMap"))
@@ -32,7 +26,7 @@ class Factory<K,V> {
         {
             implementacion = new TreeMap<>();
         }
-        else if(impMap.equals("LinkeHashMap"))
+        else if(impMap.equals("LinkedHashMap"))
         {
             implementacion = new LinkedHashMap<>();
         }
