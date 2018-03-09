@@ -26,15 +26,15 @@ class Factory<K,V> {
         
         if(impMap.equals("HashMap"))
         {
-            implementacion =  new HashMap<K,V>();
+            implementacion =  new HashMap<>();
         }
         else if(impMap.equals("TreeMap"))
         {
-            implementacion = new TreeMap<K,V>();
+            implementacion = new TreeMap<>();
         }
         else if(impMap.equals("LinkeHashMap"))
         {
-            implementacion = new LinkedHashMap<K,V>();
+            implementacion = new LinkedHashMap<>();
         }
         return implementacion;            
    }
