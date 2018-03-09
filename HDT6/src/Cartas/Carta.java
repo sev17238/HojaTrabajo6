@@ -25,6 +25,10 @@ public class Carta {
         tipoCarta = tipo;
         cantCartas = 1;
     }
+    public void setNombre(String nombre)
+    {
+        nombreCarta = nombre;
+    }
     public void sumarCarta()
     {
         cantCartas++;
