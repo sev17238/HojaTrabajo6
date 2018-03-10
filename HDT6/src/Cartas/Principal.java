@@ -19,6 +19,7 @@ public class Principal {
         Coleccion cards = null;
         Carta card = null;
         Scanner teclado = new Scanner(System.in);
+        //ciclo principal donde se ejecutan las instrucciones del programa
         while(decision != 2){
             BufferedReader br = new BufferedReader(new FileReader("cards_desc.txt"));     
 
