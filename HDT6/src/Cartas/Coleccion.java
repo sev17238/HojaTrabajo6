@@ -36,20 +36,22 @@ public class Coleccion {
         boolean existe = false;
         for (Map.Entry<String, Carta> entry : cartasDisponibles.entrySet()) //buscara en la lista de cartas disponibles si la que quiere ingresar existe
         {
-            if (entry.getKey().equals(key))
+            if (entry.getKey().equals(key) && ((entry.getValue().getTipo()).equals(tipo)))
             {
                 existe = true;
-                for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
+                if (coleccion.isEmpty())
                 {
-                    if (entryCol.getKey().equals(key))
+                    Carta carta = new Carta(tipo);
+                    coleccion.put(key, carta);
+                }
+                else 
+                {
+                    for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
                     {
-                        entryCol.getValue().sumarCarta();
-                    }
-                    else
-                    {
-                        key = entry.getKey();
-                        Carta card = entry.getValue();
-                        coleccion.put(key, card);
+                        if (entryCol.getKey().equals(key))
+                        {
+                            entryCol.getValue().sumarCarta();
+                        }
                     }
                 }
             }
@@ -82,7 +84,8 @@ public class Coleccion {
         for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
         {
             hilo += "Nombre de carta: " + entryCol.getKey();
-            hilo += "\tTipo: "+ entryCol.getValue().getTipo() + "\n";
+            hilo += "\tTipo: "+ entryCol.getValue().getTipo();
+            hilo += "\tCantidad: " + entryCol.getValue().getCantCartas() + "\n";
         }
         return hilo;
     }
