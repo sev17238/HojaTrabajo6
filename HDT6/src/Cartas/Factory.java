@@ -5,8 +5,7 @@ import java.util.*;
 
 /**
  * Clase que demuestra la utilizacion del patron de diseño factory.
- * @author Diego Sevilla 17238
- * @author AnaLucia Hernandez 17138
+ * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 class Factory<K,V> {
     Map implementacion;
@@ -32,4 +31,5 @@ class Factory<K,V> {
         }
         return implementacion;            
    }
+
 }

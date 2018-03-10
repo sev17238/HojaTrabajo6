@@ -6,10 +6,12 @@
 package Cartas;
 
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
- *
- * @author Ana Lucia Hernandez (17138) Diego Sevilla 
+ * Clase donde se realizan las busquedas, incersiones y ordenamientos en las implementaciones de Map.
+ * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class Coleccion {
     
@@ -21,7 +23,7 @@ public class Coleccion {
         coleccion = fac.getMap(impMap);
         cartasDisponibles = fac.getMap(impMap);
     }
-    public Map getMap()
+    public Map getColeccion()
     {
         return coleccion;
     }
@@ -46,13 +48,21 @@ public class Coleccion {
                 }
                 else 
                 {
+                    boolean coincide = false;
                     for (Map.Entry<String, Carta> entryCol : coleccion.entrySet())
                     {
-                        if (entryCol.getKey().equals(key))
+                        if (entryCol.getKey().equals(key)) //para revisar si la carta que está intentando insertar ya existe en la colección
                         {
                             entryCol.getValue().sumarCarta();
+                            coincide = true;
                         }
                     }
+                    if (coincide == false) // ya que ya reviso toda la coleccion, si no se ha encontrado una existente, que la cree en la coleccion
+                    {
+                        Carta carta = new Carta(tipo);
+                        coleccion.put(key, carta);
+                    }
+                    break;
                 }
             }
         }
@@ -70,13 +80,6 @@ public class Coleccion {
         }
         return busqueda;
     }
-    public  void eliminarCartaHash(String key, HashMap<String, Carta> listaCartas) {
-        if (listaCartas.containsKey(key)) {
-            listaCartas.remove(key);
-        } else {
-            System.out.println("No hay ninguna carta con esa llave.");  
-        }       
-    } 
     
     public String mostrarCartasColeccion()
     {
@@ -89,6 +92,7 @@ public class Coleccion {
         }
         return hilo;
     }
+    
     public String mostrarCartasDisponibles()
     {
         String hilo ="";
@@ -98,5 +102,73 @@ public class Coleccion {
             hilo += "\tTipo: "+ entryCol.getValue().getTipo() + "\n";
         }
         return hilo;
+    }
+    
+
+    /**
+     * Metodo que ordena una implementacion de map por sus valores.
+     * @param <K> un generico
+     * @param <V> un generico
+     * @param map un map(K,V)
+     * @return el map ya ordenado
+     */
+    public <K, V extends Comparable<? super V>> Map<K, V> ordenarPorValor(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>(map.entrySet());
+        Collections.sort( list, new Comparator<Map.Entry<K, V>>() {
+            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+                return (o1.getValue()).compareTo( o2.getValue() );
+            }
+        });
+        
+        Map<K, V> result = new LinkedHashMap<K, V>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }        
+        //Aqui se imprime el Map ya ordenado.
+        String hilo ="";
+        for (Map.Entry<K, V> entryCol : result.entrySet()){
+            hilo += "Nombre de carta: " + entryCol.getKey();
+            hilo += "\tTipo: "+ entryCol.getValue() + "\n";
+        }
+        System.out.println(hilo);
+        return result; //este retorno no se usa pero ni modo jajaja ya salio xD
+    }
+    /**
+     * Metodo que genera un Map(String,String) a partir del Map(String,Carta) "cartasDisponibles" de
+     * manera que pueda ser ordenada por el metodo "ordenarPorValor"
+     * @param imp
+     * @return 
+     */
+    public Map<String,String> deMapValueCartaAMapValueTipo_D(String imp){
+        Factory fac = new Factory();
+        Map<String,String> newMap = fac.getMap(imp);
+        String name="";
+        String tipo="";        
+        for (Map.Entry<String, Carta> entry : cartasDisponibles.entrySet()) //buscara en la lista de cartas disponibles si la que quiere ingresar existe
+        {
+            name = entry.getKey();
+            tipo = entry.getValue().getTipo();
+            newMap.put(name,tipo);            
+        }
+        return newMap;
+    }
+    /**
+     * Metodo que genera un Map(String,String) a partir del Map(String,Carta) "coleccion" de
+     * manera que pueda ser ordenada por el metodo "ordenarPorValor"
+     * @param imp
+     * @return 
+     */
+    public Map<String,String> deMapValueCartaAMapValueTipo_C(String imp){
+        Factory fac = new Factory();
+        Map<String,String> newMap = fac.getMap(imp);
+        String name="";
+        String tipo="";        
+        for (Map.Entry<String, Carta> entry : coleccion.entrySet()) //buscara en la lista de cartas disponibles si la que quiere ingresar existe
+        {
+            name = entry.getKey();
+            tipo = entry.getValue().getTipo();
+            newMap.put(name,tipo);            
+        }
+        return newMap;
     }
 }

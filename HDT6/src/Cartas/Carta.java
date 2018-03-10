@@ -12,11 +12,11 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 /**
- *
- * @author anahernandez
+ *  Clase que representa a una Carta.
+ * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class Carta {
-    private String nombreCarta;
+    
     private String tipoCarta;
     private int cantCartas; //si el usuario ingresa mas de una carta con el mismo nombre y valor, se le agregara al contador en lugar de repetirlas
     
@@ -25,10 +25,12 @@ public class Carta {
         tipoCarta = tipo;
         cantCartas = 1;
     }
-    public void setNombre(String nombre)
+    public Carta ()
     {
-        nombreCarta = nombre;
+        tipoCarta = "";
+        cantCartas = 1;
     }
+    
     public void sumarCarta()
     {
         cantCartas++;
