@@ -32,7 +32,7 @@ class Factory<K,V> {
         {
             implementacion = new TreeMap<K,V>();
         }
-        else if(impMap.equals("LinkeHashMap"))
+        else if(impMap.equals("LinkedHashMap"))
         {
             implementacion = new LinkedHashMap<K,V>();
         }
