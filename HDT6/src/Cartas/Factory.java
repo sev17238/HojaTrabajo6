@@ -13,7 +13,11 @@ class Factory<K,V> {
      * Constructor vacio.
      */
     public Factory(){}
-    
+    /**
+     * Metodo que retorna la implementacion a utilizar
+     * @param impMap el string que dice que implementacionse utilizara
+     * @return el Map correspondiente
+     */
     public Map getMap(String impMap) {
     // seleccion de la implementacion a utilizar:
         

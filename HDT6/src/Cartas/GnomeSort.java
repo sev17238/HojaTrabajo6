@@ -1,14 +1,10 @@
 
-
+package Cartas;
 /**
  * Clase que implementa el metodo de ordenamiento de Gnome.
  * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class GnomeSort {
-    
-    public GnomeSort(){
-        
-    }
     
     public Comparable[] GnomeSort(Comparable[] list){        
         int index=1; //start of search

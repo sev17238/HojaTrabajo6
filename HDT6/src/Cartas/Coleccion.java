@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Cartas;
 
 import java.util.*;
@@ -17,22 +13,38 @@ public class Coleccion {
     
     Map<String, Carta> coleccion;
     Map<String, Carta> cartasDisponibles;
-    
+    /**
+     * Constructor de Coleccion donde se incializan los atributos; uno que es un map que contiene
+     * todas las cartas disponibles y otro que representa las cartas que tiene un usuario.
+     * @param impMap la cadena que dice el tipo de implementacion a utilizar
+     */
     public Coleccion(String impMap){
         Factory fac = new Factory();
         coleccion = fac.getMap(impMap);
         cartasDisponibles = fac.getMap(impMap);
     }
+    /**
+     * Metodo que returna la coleccion
+     * @return un map representando a la coleccion del usuario
+     */
     public Map getColeccion()
     {
         return coleccion;
     }
-    
+    /**
+     * Metodo que retorna las caratas disponibles
+     * @return un map representando a todas las cartas disponibles que hay
+     */
     public Map getCartasDisp()
     {
         return cartasDisponibles;
     }
-    
+    /**
+     * Metodo que inserta una carta a la coleccion del usuario
+     * @param key la llave de la carta
+     * @param tipo el tipo de la carta
+     * @return un boolean que determina si la carta existe
+     */
     public boolean insertarCarta(String key, String tipo)
     {
         boolean existe = false;
@@ -68,6 +80,11 @@ public class Coleccion {
         }
         return existe;
     }
+    /**
+     * Metodo que busca una carta en especifico
+     * @param nombre el de la carta
+     * @return la carta
+     */
     public Map.Entry<String, Carta> buscarCarta(String nombre)
     {
         Map.Entry<String, Carta> busqueda = null;
@@ -80,7 +97,10 @@ public class Coleccion {
         }
         return busqueda;
     }
-    
+    /**
+     * Metodo que muestra las cartas de la coleccion del usuaio
+     * @return una string con la info
+     */
     public String mostrarCartasColeccion()
     {
         String hilo ="";
@@ -92,7 +112,10 @@ public class Coleccion {
         }
         return hilo;
     }
-    
+    /**
+     * Metodo que muestra todas las cartas disponibles
+     * @return una string con la info
+     */
     public String mostrarCartasDisponibles()
     {
         String hilo ="";
@@ -136,8 +159,8 @@ public class Coleccion {
     /**
      * Metodo que genera un Map(String,String) a partir del Map(String,Carta) "cartasDisponibles" de
      * manera que pueda ser ordenada por el metodo "ordenarPorValor"
-     * @param imp
-     * @return 
+     * @param imp la implementaicion de Map que se esta utilizando
+     * @return el nuevo mapa (String,String)
      */
     public Map<String,String> deMapValueCartaAMapValueTipo_D(String imp){
         Factory fac = new Factory();
@@ -155,8 +178,8 @@ public class Coleccion {
     /**
      * Metodo que genera un Map(String,String) a partir del Map(String,Carta) "coleccion" de
      * manera que pueda ser ordenada por el metodo "ordenarPorValor"
-     * @param imp
-     * @return 
+     * @param imp la implementaicion de Map que se esta utilizando
+     * @return el nuevo mapa (String,String)
      */
     public Map<String,String> deMapValueCartaAMapValueTipo_C(String imp){
         Factory fac = new Factory();
