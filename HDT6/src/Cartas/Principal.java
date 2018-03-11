@@ -41,17 +41,17 @@ public class Principal {
                     case "1":
                         entry = "HashMap";
                         cards = new Coleccion(entry);
-                        imp = (HashMap)cards.getMap();   
+                        imp = (HashMap)cards.getColeccion();   
                         break;
                     case "2":
                         entry = "TreeMap";
                         cards = new Coleccion(entry);
-                        imp = (TreeMap)cards.getMap();
+                        imp = (TreeMap)cards.getColeccion();
                         break;
                     case "3":
                         entry = "LinkedHashMap";
                         cards = new Coleccion(entry);
-                        imp = (LinkedHashMap)cards.getMap();
+                        imp = (LinkedHashMap)cards.getColeccion();
                         break;   
                 } 
                 //AHORA LOS KEYS SERAN EL NOMBRE DE LA CARTA 
@@ -75,8 +75,8 @@ public class Principal {
                 while(decision2 != 7)
                 {
                     System.out.println("Elija una de las de las 7 opciones: \n1. Agregar una carta a mi coleccion"
-                    + "\n2.Mostrar el tipo de una carta en especifico.\n3.Mostrar el tipo nombre,tipo y cantidad de una carta en coleccion."
-                            + "\n4. Opcion 3 solo que ordenadas por tipo.\n5.Mostrar el nombre y el tipo de todas las cartas existentes."
+                    + "\n2. Mostrar el tipo de una carta en especifico.\n3. Mostrar el nombre,tipo y cantidad de cada carta en coleccion."
+                            + "\n4. Opcion 3 solo que ordenadas por tipo.\n5. Mostrar el nombre y el tipo de todas las cartas existentes."
                             + "\n6. Opcion 5 pero ordenadas por tipo.\n7. Salir");
                     decision2 = Integer.parseInt(teclado.nextLine());
 
@@ -101,11 +101,14 @@ public class Principal {
                             System.out.println(cards.mostrarCartasColeccion());
                             break;
                         case 4:
+                            cards.ordenarPorValor(cards.deMapValueCartaAMapValueTipo_C(entry));
                             break;
                         case 5: // se muestran las cartas disponibles
                             System.out.println(cards.mostrarCartasDisponibles());
                             break;
                         case 6:
+                            //System.out.println(cards.ordenarPorTipoDisp(entry));                            
+                            cards.ordenarPorValor(cards.deMapValueCartaAMapValueTipo_D(entry));
                             break;
                         case 7:
                             decision2 = 7;
@@ -113,7 +116,7 @@ public class Principal {
 
                     }
                 }
-                System.out.println("Desea salir? \n1. No \n2. Si");
+                System.out.println("Desea salir del programa? \n1. No \n2. Si");
                 decision = Integer.parseInt(teclado.nextLine());
 
             }

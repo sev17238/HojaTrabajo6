@@ -6,6 +6,11 @@
  * @author Diego C-villa 17238
  */
 public class GnomeSort {
+    
+    public GnomeSort(){
+        
+    }
+    
     public Comparable[] GnomeSort(Comparable[] list){        
         int index=1; //start of search
         int temp;
