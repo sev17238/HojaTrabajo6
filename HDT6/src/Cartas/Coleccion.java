@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 /**
- *
- * @author Ana Lucia Hernandez (17138) Diego Sevilla 
+ * Clase donde se realizan las busquedas, incersiones y ordenamientos en las implementaciones de Map.
+ * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class Coleccion {
     

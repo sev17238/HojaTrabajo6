@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- *
+ * Clase principal donde se ejecuta el menu del programa.
  * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class Principal {

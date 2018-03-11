@@ -12,8 +12,8 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 /**
- *
- * @author anahernandez
+ *  Clase que representa a una Carta.
+ * @author Ana Lucía Hernández (17138) Diego Sevilla (17238)
  */
 public class Carta {
     private String nombreCarta;
